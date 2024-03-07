@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+
+<style>
+   body{
+        background-image: url("https://1.bp.blogspot.com/-uMPbcXtT0F4/Tnq7wvTAc6I/AAAAAAAAABU/9d_K9Gj42VM/s1600/gary+1.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: rgb(206, 192, 209);
+    }
+    h1{
+        color: rgb(116, 8, 92);
+    }
+    .card{
+        background-image:url("");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: aliceblue;
+    }
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary  navbar-fixed-top">
+        <a class="navbar-brand" href="#" style="color: red;">SHOPIFY</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    
+    <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                   
+              <a class="nav-link " href="{% url 'home' %}">Home</a>
+                  </li>
+                  <li class="nav-item ">
+                    <a class="nav-link " href="{% url 'loginpage' %}">Login</a>
+                  </li> 
+                
+                <li class="nav-item ">
+                    <a class="nav-link " href="{% url 'signuppage' %}">Registration</a>
+                  </li>  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                      Catogories
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item active" href="#">All Products</a>
+                      
+                      <a class="dropdown-item" href="#">Women</a>
+                      <a class="dropdown-item" href="#">Men</a>
+                      <a class="dropdown-item" href="#">Kids</a>
+                     </div>
+                  </li>  
+                  <li class="nav-item ">
+                    <a class="nav-link" href="#"><img src="https://img.favpng.com/1/0/19/shopping-cart-logo-grocery-store-png-favpng-Ch95Hxwf72xDpPbZbmv87T8m8.jpg" width="40px" height="30px"></a>
+                  </li>
+              </ul>
+            </div>
+          </nav>
+          <br>
+          <div class="container col-xl-7">
+
+            <div class="card" style="width: 45rem;">
+<br>
+  
+      <h1 style="text-align: center; color: rgb(143, 6, 120);">CREATE AN ACCOUNT</h1><br>
+      {% for message in messages %}<h5>
+        <div class="alert alert-danger mt-5">
+             {{ message }}
+         </div>
+     </h5>
+     {% endfor %}
+
+      <div class="form">
+            <form method="post" action="{% url 'add_userdb' %}" class="was-validated"  enctype="multipart/form-data">
+              {% csrf_token %}
+           
+          <div class="form-group col-md-12">
+             <input required type="text" name="fname" class="form-control" placeholder="Enter Firstname">
+             <div class="valid-feedback">valid</div>
+             <div class="invalid-feedback">Please fill out this field</div>    
+          </div>
+          <div class="form-group col-md-12">
+            <input required type="text" name="lname" class="form-control" placeholder="Enter Lastname">
+            <div class="valid-feedback">valid</div>
+            <div class="invalid-feedback">Please fill out this field</div>    
+         </div>
+         <div class="form-group col-md-12">
+            <input required type="text" name="uname" class="form-control" placeholder="Enter Username">
+            <div class="valid-feedback">valid</div>
+            <div class="invalid-feedback">Please fill out this field</div>    
+         </div>
+         <div class="form-group col-md-12">
+            <input required type="text" name="address" class="form-control" placeholder="Enter Address">
+            <div class="valid-feedback">valid</div>
+            <div class="invalid-feedback">Please fill out this field</div>    
+         </div>
+         <div class="form-group col-md-12">
+            <input required type="number" name="number" class="form-control" placeholder="Enter Contact Number">
+            <div class="valid-feedback">valid</div>
+            <div class="invalid-feedback">Please fill out this field</div>    
+         </div>
+         
+         <div class="form-group col-md-12">
+            <input required type="email" name="email" class="form-control" placeholder="Enter Your Email">
+            <div class="valid-feedback">valid</div>
+            <div class="invalid-feedback">Please fill out this field</div>    
+         </div>
+         <div class="form-group col-md-12">
+            <input required type="file" name="file" id="form3Example4c" class="form-control" accept="image/*" placeholder="Upload Photo">
+            <div class="valid-feedback">valid</div>
+            <div class="invalid-feedback">Please fill out this field</div>    
+         </div>
+              <div class="form-group col-md-12">
+              <input required type="password" name="password" class="form-control" placeholder="Enter Password">
+              <div class="valid-feedback">valid</div>
+              <div class="invalid-feedback">Please fill out this field</div>    
+          </div>
+          <div class="form-group col-md-12">
+            <input required type="password" name="cpassword" class="form-control" placeholder="Confirm Password">
+            <div class="valid-feedback">valid</div>
+            <div class="invalid-feedback">Please fill out this field</div>    
+         </div>
+
+         
+          <div class="form-group col-md-12">
+          <input type="checkbox" value="Remember Me" id="rememberme">
+          <label for="rememberme" style="color: rgb(9, 131, 139);">I Agree On</label><br>
+          <a style="color: blueviolet;">Terms Of Services</a>
+          </div>
+          <div class="container">
+          <a style="color: brown;">Check this checkbox to continue</a>
+          </div>
+          <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4 mt-1">
+            
+                  <button type="submit"  class="btn btn-success w-100">Submit</button>
+              </div>
+              <div class="col-md-4"></div>
+              </div><br>
+             
+          </form>
+          </div>
+          </div>
+          </div><br>
+          <div class="card bg-secondary"><br><br>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h2 class="text-light">Contact</h2>
+                        <p>Address: 5634 Park View Avenue, </p>
+                        <p>34th Street,Bangalore</p>
+                        <p>Phone: +91 5466 991923</p>
+                    </div>
+         
+                    <div class="col">
+                        <h2 class="text-light">Quick Links</h2>
+                        <p>Visit Store</p>
+                        <p>About US</p>
+                        <p>Contact US</p>
+                       </div>
+                    <div class="col">
+                        <h2 class="text-light">My Account</h2>
+                        <p>Sign In</p>
+                        <p>View Cart</p>
+                        <p>My Whishlist</p>
+                        <p>Track Your Order</p>
+                        
+                    </div>
+                    <div class="col">
+                        <h2 class="text-light">Help</h2>
+                        <p>Store Policy</p>
+                        <p>Shipping & Returns</p>
+                        <p>Terms & Conditions</p>
+                        <p>FAQ</p>
+                        
+                    </div>
+                    </div>
+                </div><br>
+                <a style="text-align: center;">@ All Rights Reserved to Omega 2022</a>
+                <br>
+          </div>
+           
+</body>
+</html>
+
+

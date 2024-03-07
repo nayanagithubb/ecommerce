@@ -1,0 +1,154 @@
+<html lang="en">
+
+<head>
+    {% load static %}
+    <title>
+        Website
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: rgb(230, 216, 247);
+        }
+
+        .card-a {
+            width: 10rem;
+            background-color: rgb(201, 204, 155);
+            height: 17rem;
+        }
+
+        .card-b {
+            width: 69rem;
+            background-color: rgb(243, 238, 230);
+            height: 17rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary  navbar-fixed-top">
+        <a class="navbar-brand" href="#" style="color: red;">SHOPIFY</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+       
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item ">
+                    <a class="nav-link" href="{% url 'admin_logout' %}">LogOut</a>
+                </li>
+
+
+            </ul>
+        </div>
+    </nav>
+
+    <br>
+        
+         
+       <div class="container-fluid">
+        <div class="card-group">
+            <div class="card-a"><br>
+                <div class="card-body">
+                    <div class="card-text list-group" style="color: rgb(187, 27, 27);">
+                        <a style="text-align:center;" href="{% url 'admin_home' %}">Dashboard</a><br>
+                        <a style="text-align: center;" href="{% url 'add_category' %}">Add Category</a><br>
+                        <a style="text-align: center;" href="{% url 'add_product' %}">Add Product</a><br>
+                        <a style="text-align: center;" href="{% url 'show_product' %}">Show Product</a><br>
+                        <a style="text-align: center;" href="{% url 'show_user' %}">User Details</a></div>
+                    </div>
+
+                </div>
+                <div class="card-b">
+               <div class="card-body">
+                    <h1 class="card-text text-center" style="color: rgb(8, 8, 145);">Add Category</h1><br>
+                    {% for c in category %}
+                    <form method="post" action="{% url 'add_categorydb' c.id %}">
+                        {% csrf_token %}
+                     
+                        {% endfor %}
+
+                    <div class="form-group col-md-12">
+    
+                    <div class="col-md-14">
+                      
+                            <input type="text" name="category" class="form-control" placeholder="Category">
+                        </div>
+                    </div><br><br>
+                    <div class="row">
+                        <div class="col-md-5"></div>
+                        <div class="col-md-3 mt-1">
+
+                            <button type="submit" class="btn btn-dark w-50">SAVE</button>
+                        </div>
+                        <div class="col-md-5"></div>
+                    </div><br>
+                
+                
+</form>
+        </div>
+    </div>
+  
+    </div>
+    
+    </div><br>
+    
+    <div class="card bg-secondary"><br>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2 class="text-light">Contact</h2>
+                    <p>Address: 5634 Park View Avenue, </p>
+                    <p>34th Street,Bangalore</p>
+                    <p>Phone: +91 5466 991923</p>
+                </div>
+                <div class="col">
+                    <h2 class="text-light">Quick Links</h2>
+                    <p>Visit Store</p>
+                    <p>About US</p>
+                    <p>Contact US</p>
+                </div>
+                <div class="col">
+                    <h2 class="text-light">My Account</h2>
+                    <p>Sign In</p>
+                    <p>View Cart</p>
+                    <p>My Whishlist</p>
+                    <p>Track Your Order</p>
+
+                </div>
+                <div class="col">
+                    <h2 class="text-light">Help</h2>
+                    <p>Store Policy</p>
+                    <p>Shipping & Returns</p>
+                    <p>Terms & Conditions</p>
+                    <p>FAQ</p>
+
+                </div>
+            </div>
+        </div><br>
+
+        <a style="text-align: center;">@ All Rights Reserved to Omega 2022</a>
+        <br>
+    </div>
+    
+</body>
+
+</html>
